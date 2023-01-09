@@ -221,6 +221,11 @@ func main() {
 		ip, err = GetIPAddress()
 		if err != nil {
 			log.Printf("couldn't get ip: %s", err)
+			var er error
+			ip, er = GetIPV4Address()
+			if er != nil {
+				log.Fatal(er)
+			}
 		}
 	}
 	if ip.IsIPV6() {
